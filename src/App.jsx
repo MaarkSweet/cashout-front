@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { AppBar, Toolbar, Button, Container } from '@mui/material';
+import Dashboard from './components/Dashboard';
+import CreateLink from './components/CreateLink';
+import Statistics from './components/Statistics';
+import Search from './components/Search';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <AppBar position="static">
+        <Toolbar>
+          <Button color="inherit" component={Link} to="/">Главная</Button>
+          <Button color="inherit" component={Link} to="/create-link">Создать ссылку</Button>
+          <Button color="inherit" component={Link} to="/statistics">Статистика</Button>
+          <Button color="inherit" component={Link} to="/search">Поиск</Button>
+        </Toolbar>
+      </AppBar>
+      
+      <Container maxWidth="lg" style={{ marginTop: '20px' }}>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/create-link" element={<CreateLink />} />
+          <Route path="/statistics" element={<Statistics />} />
+          <Route path="/search" element={<Search />} />
+        </Routes>
+      </Container>
+    </Router>
+  );
 }
 
-export default App
+export default App;
