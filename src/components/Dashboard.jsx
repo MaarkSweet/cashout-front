@@ -37,9 +37,6 @@ const Dashboard = () => {
       <Grid item xs={12}>
         <Paper elevation={3} style={{ padding: '20px' }}>
           <Typography variant="h5" gutterBottom>Список ссылок</Typography>
-          <Button variant="contained" color="primary" href="/create-link" style={{ marginBottom: '20px' }}>
-            Создать новую ссылку
-          </Button>
           <LinkList links={links} />
         </Paper>
       </Grid>
